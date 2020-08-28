@@ -12,13 +12,22 @@
 // con difficoltà 2 => tra 1 e 50
 
 
-
+var possibilita = 84;
 // 1. GENERO 16 NUMERI CASUALI TRA 1 E 100 DIVERSI TRA DI LORO
-
+var numeroCasuale = [];
+while(numeroCasuale.length < 16){
+    var random = Math.floor(Math.random() * 100) + 1;
+    if(numeroCasuale.indexOf(random) === -1) numeroCasuale.push(random);
+}
+console.log(numeroCasuale);
 // 2. CHIEDO ALL'UTENTE DI INSERIRE PIU' VOLTE UN NUMERO COMPRESO TRA 1 E 100
-
+var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+while(numeroUtente.lenght < possibilita == false ) {
+  numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+}
+console.log(numeroUtente);
 // 3. L'UTENTE NON PUO' INSERIRE LO STESSO NUMERO PIU' VOLTE
 
 // 4. SE IL NUMERO DIGITATO DALL'UTENTE CORRISPONDE AL NUMERO CASUALE ALLORA HA PERSO, ALTRIMENTI VA AVANTI A INSERIRE UN ALTRO NUMERO
 
-// 5. IL SOFTWARE DEVE COMUNICARE IL PUNTEGGIO DEL GIOCATORE 
+// 5. IL SOFTWARE DEVE COMUNICARE IL PUNTEGGIO DEL GIOCATORE, CIOE' QUANTE VOLTE L'UTENTE HA INSERITO UN NUMERO
