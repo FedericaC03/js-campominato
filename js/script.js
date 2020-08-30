@@ -1,33 +1,51 @@
-// Il computer deve generare 16 numeri casuali tra 1 e 100.
-// I numeri non possono essere duplicati
-// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L’utente non può inserire più volte lo stesso numero.
-// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
-// La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
-// BONUS: (da fare solo se funziona tutto il resto)
+
+//BONUS
 // all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
 // con difficoltà 0 => tra 1 e 100
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
-
-
-var possibilita = 84;
-// 1. GENERO 16 NUMERI CASUALI TRA 1 E 100 DIVERSI TRA DI LORO
-var numeroCasuale = [];
-while(numeroCasuale.length < 16){
-    var random = Math.floor(Math.random() * 100) + 1;
-    if(numeroCasuale.indexOf(random) === -1) numeroCasuale.push(random);
+var difficolta = parseInt(prompt("Inserisci il livello di difficoltà (0, 1 o 2)"));
+var range;
+var numerinegati = 16
+var tentativi = range - numerinegati
+if (difficolta == 0) {
+  range = 100;
+} else if (difficolta == 1) {
+  range = 80;
+} else if (difficolta == 2) {
+  range = 20;
+} else {
+  alert("Per favore inserire solo i numeri 0, 1 o 2");
 }
-console.log(numeroCasuale);
+
+// 1. GENERO 16 NUMERI RANDOM DA 1 A 100
+var bombe = [];
+while(bombe.length < 16){
+    var random = Math.floor(Math.random() * range) + 1;
+    if(bombe.indexOf(random) === -1) bombe.push(random);
+}
+console.log(bombe)
+
 // 2. CHIEDO ALL'UTENTE DI INSERIRE PIU' VOLTE UN NUMERO COMPRESO TRA 1 E 100
-var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
-while(numeroUtente.lenght < possibilita == false ) {
-  numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+var partita = false;
+var somma = 0;
+var listaNumUtente = [];
+while (partita == false) {
+    var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a " + range));
+     if (bombe.includes(numeroUtente)) {
+         alert ("Hai perso! Hai totalizzato " + somma + " punti");
+         partita = true;
 }
-console.log(numeroUtente);
 // 3. L'UTENTE NON PUO' INSERIRE LO STESSO NUMERO PIU' VOLTE
-
 // 4. SE IL NUMERO DIGITATO DALL'UTENTE CORRISPONDE AL NUMERO CASUALE ALLORA HA PERSO, ALTRIMENTI VA AVANTI A INSERIRE UN ALTRO NUMERO
-
 // 5. IL SOFTWARE DEVE COMUNICARE IL PUNTEGGIO DEL GIOCATORE, CIOE' QUANTE VOLTE L'UTENTE HA INSERITO UN NUMERO
+
+if (isNaN(numeroUtente) == true || numeroUtente > 100 || numeroUtente < 1) {
+    alert("Puoi inserire solo un numero compreso tra 1 e 100");
+  } else if (listaNumUtente.indexOf(numeroUtente) >= 0) {
+    alert("Questo numero è stato già inserito!!!");
+  }else {
+    listaNumUtente.push(numeroUtente);
+  };
+  somma++;
+};
