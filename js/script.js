@@ -6,16 +6,29 @@
 // con difficoltà 2 => tra 1 e 50
 var difficolta = parseInt(prompt("Inserisci il livello di difficoltà (0, 1 o 2)"));
 var range;
-var numerinegati = 16
-var tentativi = range - numerinegati
-if (difficolta == 0) {
-  range = 100;
-} else if (difficolta == 1) {
-  range = 80;
-} else if (difficolta == 2) {
-  range = 20;
-} else {
-  alert("Per favore inserire solo i numeri 0, 1 o 2");
+var tentativi = range - 16
+
+// if (difficolta == 0) {
+//   range = 100;
+// } else if (difficolta == 1) {
+//   range = 80;
+// } else if (difficolta == 2) {
+//   range = 20;
+// } else {
+//   alert("Per favore inserire solo i numeri 0, 1 o 2");
+// }
+switch (difficolta) {
+  case 0:
+    range = 100;
+    break;
+  case 1:
+    range = 80;
+    break;
+  case 2:
+    range = 50;
+    break;
+  default:
+  range = 17;
 }
 
 // 1. GENERO 16 NUMERI RANDOM DA 1 A 100
